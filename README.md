@@ -66,4 +66,24 @@ Add to Cart: /api/cart/add/ (POST)
 ### Orders
 Purchase Items in Cart: /api/purchase/ (POST)
 
+## Testing
+To test the API endpoints, you can use tools like Postman or cURL to make HTTP requests. Be sure to add the required authentication token when needed.
 
+Example to add a product to the cart (with an auth token):
+  POST /api/cart/add/
+  {
+      "product_id": 1,
+      "quantity": 2
+  }
+## Contributing
+We welcome contributions! If you want to contribute:
+
+Fork the repository.
+Create a new branch (git checkout -b feature-branch).
+Make your changes and commit (git commit -m 'Add feature').
+Push to the branch (git push origin feature-branch).
+Create a pull request.
+Please ensure your code follows the PEP 8 style guide.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
