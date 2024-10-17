@@ -51,30 +51,55 @@ Ensure your SQL Server is properly configured. Follow these steps to sync the sc
 3) Load initial data or start using the admin panel to add products and categories.
 
 ## API Endpoint
-### Authentication
-Register: /api/register/ (POST)
-Login: /api/login/ (POST)
-### Categories
-List Categories: /api/categories/ (GET)
-### Products
-List All Products: /api/products/ (GET)
-Products by Category: /api/categories/<category_id>/products/ (GET)
-Product Detail: /api/products/<product_id>/ (GET)
-### Cart
-View Cart: /api/cart/ (GET)
-Add to Cart: /api/cart/add/ (POST)
-### Orders
-Purchase Items in Cart: /api/purchase/ (POST)
+### Authentication APIs
+- **Register**:  
+  - **Endpoint**: `/api/register/`  
+  - **Method**: `POST`  
+  - **Description**: Registers a new user.
 
-## Testing
-To test the API endpoints, you can use tools like Postman or cURL to make HTTP requests. Be sure to add the required authentication token when needed.
+- **Login**:  
+  - **Endpoint**: `/api/login/`  
+  - **Method**: `POST`  
+  - **Description**: Logs in a user and returns a token for authentication.
 
-Example to add a product to the cart (with an auth token):
-  POST /api/cart/add/
-  {
-      "product_id": 1,
-      "quantity": 2
-  }
+### Category APIs
+- **List Categories**:  
+  - **Endpoint**: `/api/categories/`  
+  - **Method**: `GET`  
+  - **Description**: Retrieves a list of all product categories.
+
+### Product APIs
+- **List All Products**:  
+  - **Endpoint**: `/api/products/`  
+  - **Method**: `GET`  
+  - **Description**: Retrieves a list of all products.
+
+- **Products by Category**:  
+  - **Endpoint**: `/api/categories/<category_id>/products/`  
+  - **Method**: `GET`  
+  - **Description**: Retrieves a list of products filtered by category.
+
+- **Product Detail**:  
+  - **Endpoint**: `/api/products/<product_id>/`  
+  - **Method**: `GET`  
+  - **Description**: Retrieves details of a specific product.
+
+### Cart APIs
+- **View Cart**:  
+  - **Endpoint**: `/api/cart/`  
+  - **Method**: `GET`  
+  - **Description**: Retrieves the current user's shopping cart.
+
+- **Add to Cart**:  
+  - **Endpoint**: `/api/cart/add/`  
+  - **Method**: `POST`  
+  - **Description**: Adds a product to the shopping cart with a specified quantity.
+
+### Order APIs
+- **Purchase**:  
+  - **Endpoint**: `/api/purchase/`  
+  - **Method**: `POST`  
+  - **Description**: Creates an order for the products in the cart and clears the cart.
 ## Contributing
 We welcome contributions! If you want to contribute:
 
