@@ -6,15 +6,13 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        user = User(
-            username = validated_data['username'],
-        )
+        user = User(username=validated_data['username'])
         user.set_password(validated_data['password'])
         user.save()
         return user
-    
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,14 +20,14 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
+    category = CategorySerializer(read_only=True)
 
     class Meta:
-        model = Product 
+        model = Product
         fields = ['id', 'name', 'category', 'price', 'description', 'image']
-        
+
 class CartItemSerializer(serializers.ModelSerializer):
-    product = ProductSerializer()
+    product = ProductSerializer(read_only=True)
 
     class Meta:
         model = CartItem
@@ -43,12 +41,14 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ['id', 'items']
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+
     class Meta:
         model = OrderItem
         fields = ['id', 'product', 'quantity', 'unit_price']
 
 class OrderSerializer(serializers.ModelSerializer):
-    items = OrderItemSerializer(many=True)
+    items = OrderItemSerializer(many=True, read_only=True)
 
     class Meta:
         model = Order
